@@ -39,12 +39,20 @@ greeting_replies = [
 ]
 
 tabgimsg = "tabgi"
+abirmsg = "abir"
 
 tabgi_replies = [
     "ami tabgi ke bhalobashi",
     "yes, id love to bang tabgi",
     "mmmmm tabgii mmmm aah aah",
     "*starts humping*"
+]
+
+abir_replies = [
+    "ew, abir",
+    "i hate abir",
+    "abir? the 0.5 kd guy? gross",
+    "abir's gay btw"
 ]
 
 def ask_gemini(user_text):
@@ -78,6 +86,10 @@ async def on_message(message):
     if tabgimsg in msg:
         await message.channel.send(random.choice(tabgi_replies))
         return
+    if abirmsg in msg:
+        await message.channel.send(random.choice(abir_replies))
+        return
+        
 
    
     if bot.user in message.mentions:
