@@ -86,7 +86,9 @@ async def on_message(message):
         await message.channel.send(random.choice(greeting_replies))
         return
     if tabgimsg in msg:
-        await message.add_reaction("❤️🍆💦")
+        await message.add_reaction("❤️")
+        await message.add_reaction("🍆")
+        await message.add_reaction("💦")
         await message.channel.send(random.choice(tabgi_replies))
         return
     if abirmsg in msg:
