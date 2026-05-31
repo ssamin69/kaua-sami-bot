@@ -100,14 +100,17 @@ async def on_message(message):
 
         try:
             prompt = SYSTEM_PROMPT
+            extended_reply = ""
 
+            if message.author.id != TABGI_DISCORD_ID and message.author.id != ABIR_DISCORD_ID:
+                extended_reply += "Where is my cutie patootie Tabgi btw? Also, please keep the twinkie Abir as far away from me as possible. I can't stand him."
             if message.author.id == TABGI_DISCORD_ID:
                 prompt += "\nImportant rule: You are now talking to tabgi. Be head over heels for him. Express how much you love him and his 'nunu'."
             elif message.author.id == ABIR_DISCORD_ID:
                 prompt += "\nImportant rule: You are now talking to abir. Express your disgust and hatred for him. Make sure to mention his '0.5 kd' status. Randomly tell him 'chup kor khankirpola' sometimes."
 
             reply = ask_gemini(prompt, message.content)
-            await message.channel.send(reply)
+            await message.channel.send(reply + "\n\n" + extended_reply)
 
         except Exception as e:
             print("Gemini error:", e)
