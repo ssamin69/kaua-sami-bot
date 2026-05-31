@@ -99,7 +99,14 @@ async def on_message(message):
     if bot.user in message.mentions:
 
         try:
-            reply = ask_gemini(message.content)
+            prompt = SYSTEM_PROMPT
+
+            if message.author.id == TABGI_DISCORD_ID:
+                prompt += "\nImportant rule: You are now talking to tabgi. Be head over heels for him. Express how much you love him and his 'nunu'."
+            elif message.author.id == ABIR_DISCORD_ID:
+                prompt += "\nImportant rule: You are now talking to abir. Express your disgust and hatred for him. Make sure to mention his '0.5 kd' status. Randomly tell him 'chup kor khankirpola' sometimes."
+
+            reply = ask_gemini(prompt, message.content)
             await message.channel.send(reply)
 
         except Exception as e:
