@@ -81,23 +81,6 @@ async def on_message(message):
 
     msg = message.content.lower()
 
-   
-    if any(word in msg for word in greetings):
-        await message.channel.send(random.choice(greeting_replies))
-        return
-    if tabgimsg in msg:
-        await message.add_reaction("❤️")
-        await message.add_reaction("🍆")
-        await message.add_reaction("💦")
-        await message.channel.send(random.choice(tabgi_replies))
-        return
-    if abirmsg in msg:
-        await message.add_reaction("🤮")
-        await message.channel.send(random.choice(abir_replies))
-        return
-        
-
-   
     if bot.user in message.mentions:
 
         try:
@@ -117,6 +100,21 @@ async def on_message(message):
         except Exception as e:
             print("Gemini error:", e)
             await message.channel.send("AI is temporarily unavailable.")
+   
+   
+    if any(word in msg for word in greetings):
+        await message.channel.send(random.choice(greeting_replies))
+        return
+    if tabgimsg in msg:
+        await message.add_reaction("❤️")
+        await message.add_reaction("🍆")
+        await message.add_reaction("💦")
+        await message.channel.send(random.choice(tabgi_replies))
+        return
+    if abirmsg in msg:
+        await message.add_reaction("🤮")
+        await message.channel.send(random.choice(abir_replies))
+        return
 
     await bot.process_commands(message)
 
