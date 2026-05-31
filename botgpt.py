@@ -10,6 +10,8 @@ load_dotenv()
 
 DISCORD_TOKEN = os.getenv("TOKEN")
 GEMINI_KEY = os.getenv("GEMINI_API_KEY")
+TABGI_DISCORD_ID = 705037227029299211
+ABIR_DISCORD_ID = 1114533586679382077
 
 client = genai.Client(api_key=GEMINI_KEY)
 
@@ -55,10 +57,10 @@ abir_replies = [
     "abir's gay btw"
 ]
 
-def ask_gemini(user_text):
+def ask_gemini(prompt, user_text):
     response = client.models.generate_content(
         model="gemini-2.5-flash",
-        contents=SYSTEM_PROMPT + "\nUser: " + user_text
+        contents=prompt + "\nUser: " + user_text
     )
     return response.text
 
